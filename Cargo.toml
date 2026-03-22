@@ -1,0 +1,34 @@
+[package]
+name = "tree-sitter-nytrogen"
+description = "C-style compiler - built with C++"
+version = "0.1.3"
+authors = ["X_12 <lamadasun888@gmail.com>"]
+license = "GPL"
+readme = "README.md"
+keywords = ["incremental", "parsing", "tree-sitter", "nytrogen"]
+categories = ["parser-implementations", "parsing", "text-editors"]
+repository = "https://github.com/x12-cloud/nytrogen"
+edition = "2021"
+autoexamples = false
+
+build = "bindings/rust/build.rs"
+include = [
+  "bindings/rust/*",
+  "grammar.js",
+  "queries/*",
+  "src/*",
+  "tree-sitter.json",
+  "/LICENSE",
+]
+
+[lib]
+path = "bindings/rust/lib.rs"
+
+[dependencies]
+tree-sitter-language = "0.1"
+
+[build-dependencies]
+cc = "1.2"
+
+[dev-dependencies]
+tree-sitter = "0.25.10"
