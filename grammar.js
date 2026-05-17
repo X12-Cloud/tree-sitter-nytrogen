@@ -14,8 +14,34 @@ module.exports = grammar({
       $.function_definition,
       $.struct_definition,
       $.enum_definition,
-      $.const_definition
+      $.const_definition,
+      $.preproc_directive
     ),
+
+    preproc_directive: $ => choice(
+      $.preproc_include,
+      $.preproc_define,
+      $.preproc_ifndef,
+      $.preproc_endif
+    ),
+
+    preproc_include: $ => seq(
+      '#include',
+      field('path', $.string)
+    ),
+
+    preproc_define: $ => seq(
+      '#define',
+      field('name', $.identifier),
+      optional(field('value', /[^\n]+/)) 
+    ),
+
+    preproc_ifndef: $ => seq(
+      '#ifndef',
+      field('name', $.identifier)
+    ),
+
+    preproc_endif: $ => '#endif',
 
     // Functions: int name(params) { body }
     function_definition: $ => seq(

@@ -16,6 +16,17 @@
     "tree-sitter",
     "nytrogen"
   ],
+  "grammars": [
+    {
+      "name": "nytrogen",
+      "camelcase": "Nytrogen",
+      "scope": "source.nytrogen",
+      "file-types": [
+        "ny",
+        "nyt"
+      ]
+    }
+  ],
   "files": [
     "grammar.js",
     "tree-sitter.json",
